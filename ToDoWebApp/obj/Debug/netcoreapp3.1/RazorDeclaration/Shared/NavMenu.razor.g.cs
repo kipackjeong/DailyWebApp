@@ -83,7 +83,7 @@ using ToDoWebApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Shared\NavMenu.razor"
+#line 52 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
