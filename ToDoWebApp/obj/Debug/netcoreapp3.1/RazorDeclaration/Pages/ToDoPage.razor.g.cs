@@ -116,7 +116,6 @@ using ToDoWebApp.Model;
        
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
     private string _newItemTitle { get; set; }
-    private bool myBool { get; set; } = false;
 
     // Page Model Methods
     protected async override Task OnInitializedAsync()

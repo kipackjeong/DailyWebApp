@@ -16,8 +16,21 @@ namespace ToDoWebApp.Model
         public DateTime DateTimeCreated { get; set; }
         public string DateCreated { get; set; }
         public bool done { get; set; } = false;
-        public Done Done { get; set; }
-
+        public Done Done
+        {
+            get
+            {
+                return Done;
+            }
+            set
+            {
+                Done = value;
+                if (Done == Done.Done)
+                    done = true;
+                else
+                    done = false;
+            }
+        }
         // ctor
         public ToDoItem()
         {
