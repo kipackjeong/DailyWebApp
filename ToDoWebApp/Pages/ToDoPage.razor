@@ -5,17 +5,17 @@
 @using ToDoWebApp.Model
 @inject IToDoData ToDoData
 
-<h3>ToDoPage</h3>
+<h3>To Do</h3>
 <AuthorizeView>
     <Authorized Context="Auth">
         <div>
             <EditForm Model="@_toDoList">
-                <table class="table" Model="@_toDoList">
+                <table class="table table-hover" Model="@_toDoList">
                     <thead>
                         <tr>
-                            <th><i class="oi oi-document"></i>Title</th>
-                            <th><i class="oi oi-calendar"></i>Date</th>
-                            <th><i class="oi oi-check"></i>Done</th>
+                            <th><i class="oi oi-pencil"></i></th>
+                            <th><i class="oi oi-calendar"></i></th>
+                            <th><i class="oi oi-check"></i></th>
                             <th><i class="oi oi-trash"></i></th>
                         </tr>
                     </thead>
@@ -49,25 +49,22 @@
                     </tbody>
                 </table>
             </EditForm>
-            <form>
-                <input placeholder="What do you need to do?" @bind="_newItemTitle" />
-                <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
+            <form style="display: flex; justify-content:center; width:80%">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">What do you need to do?</span>
+                    </div>
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" @bind="_newItemTitle">
+                    <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
+                </div>
             </form>
         </div>
-
-
     </Authorized>
 
     <NotAuthorized>
         Please Login
     </NotAuthorized>
-
-
-
-
 </AuthorizeView>
-
-
 
 @code {
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
@@ -81,7 +78,7 @@
 
     private async Task AddToDo()
     {
-        if(!String.IsNullOrEmpty(_newItemTitle))
+        if (!String.IsNullOrEmpty(_newItemTitle))
         {
             var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
 
@@ -102,7 +99,6 @@
     private async Task DoneCheck(ToDoItem item)
     {
         item.Done = item.Done == Done.NotDone ? Done.Done : Done.NotDone;
-
 
         if (item.Done == Done.Done)
         {

@@ -1,12 +1,10 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using ToDoWebApp.Model;
 
 namespace ToDoWebApp.Data
 {
@@ -21,6 +19,7 @@ namespace ToDoWebApp.Data
             // bring app's configuration
             _config = config;
         }
+
         // Load data from db
         public async Task<List<T>> LoadData<T, TU>(string sql, TU param)
         {

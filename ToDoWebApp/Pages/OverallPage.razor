@@ -8,44 +8,43 @@
 <h3>Overall</h3>
 <AuthorizeView>
     <Authorized Context="Auth">
-        <EditForm Model="_toDoDict">
-            <section>
+        <div>
+            <EditForm Model="@_toDoDict">
                 <!--for demo wrap-->
                 <h1>Fixed Table header</h1>
-                <div class="tbl-header">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Done</th>
-                                <th>Not Done</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var dateAndItems in _toDoDict)
-                            {
-                            <td>
-                                <h3>
-                                    @dateAndItems.Key
-                                </h3>
-                            </td>
-                            <td>
-                                <h3> @dateAndItems.Value[0].Count Tasks Finished</h3>
-                            </td>
-                            <td>
-                                <h3> @dateAndItems.Value[1].Count Tasks Left To Do</h3>
-                            </td>
-                        }
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </EditForm>
-        </Authorized>
-    <NotAuthorized>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <i class="oi oi-calendar"></i>
+                            </th>
+                            <th><i class="oi oi-check"></i></th>
+                            <th><i class="oi oi-x"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var dateAndItems in _toDoDict)
+                        {
+                        <td>
+                            @dateAndItems.Key
+                        </td>
+                        <td>
+                            @dateAndItems.Value[0].Count
+                        </td>
+                        <td>
+                            @dateAndItems.Value[1].Count
+                        </td>
+                    }
 
-    </NotAuthorized>
-</AuthorizeView>
+                    </tbody>
+
+                    </table>
+                </EditForm>
+            </div>
+        </Authorized>
+        <NotAuthorized>
+        </NotAuthorized>
+    </AuthorizeView>
 
     @code {
         public IList<ToDoItem> _toDoList = new List<ToDoItem>();

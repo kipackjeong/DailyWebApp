@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using ToDoWebApp.Model;
 
@@ -10,16 +9,17 @@ namespace ToDoWebApp.Data
     {
         private ISQLAccess _data;
 
-
-
         #region Contructor
+
         public ToDoData(ISQLAccess data)
         {
             _data = data;
         }
-        #endregion
+
+        #endregion Contructor
 
         #region Methods
+
         public Task<List<ToDoItem>> GetTodayToDoItem()
         {
             var today = DateTime.Now.ToString("MM/dd/yy");
@@ -50,16 +50,19 @@ namespace ToDoWebApp.Data
             var sql = $"delete from dbo.ToDoList where Title = @Title";
             await _data.UpdateData<ToDoItem>(sql, item);
         }
+
         public async Task UpdateToDoneStatus(ToDoItem item)
         {
             var sql = $@"update dbo.ToDoList Set Done = 1 where Title = @Title";
             await _data.UpdateData<ToDoItem>(sql, item);
         }
+
         public async Task UpdateToUnDoneStatus(ToDoItem item)
         {
             var sql = $@"update dbo.ToDoList Set Done = 0 where Title = @Title";
             await _data.UpdateData<ToDoItem>(sql, item);
         }
-        #endregion
+
+        #endregion Methods
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ToDoWebApp.Model
 {
@@ -10,6 +7,7 @@ namespace ToDoWebApp.Model
         NotDone,
         Done
     }
+
     public class ToDoItem
     {
         public string Title { get; set; }
@@ -17,11 +15,12 @@ namespace ToDoWebApp.Model
         public string DateCreated { get; set; }
         public bool done { get; set; }
         public Done Done { get; set; }
+
         // ctor
         public ToDoItem()
         {
-
         }
+
         public ToDoItem(string title, DateTime dateTimeCreated)
         {
             Title = title;

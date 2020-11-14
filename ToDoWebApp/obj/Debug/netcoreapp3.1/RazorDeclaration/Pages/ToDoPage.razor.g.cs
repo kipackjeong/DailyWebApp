@@ -112,7 +112,7 @@ using ToDoWebApp.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+#line 69 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
        
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
     private string _newItemTitle { get; set; }
@@ -125,7 +125,7 @@ using ToDoWebApp.Model;
 
     private async Task AddToDo()
     {
-        if(!String.IsNullOrEmpty(_newItemTitle))
+        if (!String.IsNullOrEmpty(_newItemTitle))
         {
             var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
 
@@ -146,7 +146,6 @@ using ToDoWebApp.Model;
     private async Task DoneCheck(ToDoItem item)
     {
         item.Done = item.Done == Done.NotDone ? Done.Done : Done.NotDone;
-
 
         if (item.Done == Done.Done)
         {

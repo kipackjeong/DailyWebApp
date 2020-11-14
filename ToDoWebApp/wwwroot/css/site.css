@@ -184,7 +184,6 @@ app {
     }
 }
 
-
 /* TABLE */
 
 h1 {
@@ -216,7 +215,7 @@ th {
     padding: 20px 15px;
     text-align: left;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #000000;
     text-transform: uppercase;
 }
@@ -226,11 +225,10 @@ td {
     text-align: left;
     vertical-align: middle;
     font-weight: 300;
-    font-size: .9rem;
+    font-size: 1.2rem;
     color: #000000;
     border-bottom: solid 1px rgba(255,255,255,0.1);
 }
-
 
 /* demo styles */
 
@@ -243,7 +241,6 @@ body {
 section {
     margin: 50px;
 }
-
 
 /* follow me template */
 .made-with-love {
@@ -272,7 +269,6 @@ section {
         .made-with-love a:hover {
             text-decoration: underline;
         }
-
 
 /* for custom scrollbar for webkit browser*/
 
