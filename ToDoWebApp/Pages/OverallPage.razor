@@ -23,23 +23,22 @@
                 <tbody>
                     @foreach (var dateAndItems in _toDoDict)
                     {
-                    <td>
-                        @dateAndItems.Key
-                    </td>
-                    <td>
-                        @dateAndItems.Value[0].Count
-                    </td>
-                    <td>
-                        @dateAndItems.Value[1].Count
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-primary">Detail</button>
-                    </td>
-                }
+                        <td>
+                            @dateAndItems.Key
+                        </td>
+                        <td>
+                            @dateAndItems.Value[0].Count
+                        </td>
+                        <td>
+                            @dateAndItems.Value[1].Count
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary" @bind-Value="">Detail</button>
+                        </td>
+                    }
 
-                    </tbody>
-
-                </table>
+                </tbody>
+            </table>
             </EditForm>
             <ToDoPage></ToDoPage>
         </Authorized>
