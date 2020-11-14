@@ -6,55 +6,66 @@
 @inject IToDoData ToDoData
 
 <h3>ToDoPage</h3>
+<AuthorizeView>
+    <Authorized Context="Auth">
+        <div>
+            <EditForm Model="@_toDoList">
+                <table class="table" Model="@_toDoList">
+                    <thead>
+                        <tr>
+                            <th><i class="oi oi-document"></i>Title</th>
+                            <th><i class="oi oi-calendar"></i>Date</th>
+                            <th><i class="oi oi-check"></i>Done</th>
+                            <th><i class="oi oi-trash"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in _toDoList)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Title
+                                </td>
+                                <td>
+                                    @item.DateTimeCreated.ToString("hh:mm tt")
+                                </td>
+                                <td>
+                                    @if (item.Done == Done.Done)
+                                    {
+                                        item.done = true;
+                                    }
+                                    else
+                                    {
+                                        item.done = false;
+                                    }
 
-<EditForm Model="@_toDoList">
-    <table class="table">
-        <thead>
-            <tr>
-                <th><i class="oi oi-document"></i>Title</th>
-                <th><i class="oi oi-calendar"></i>Date</th>
-                <th><i class="oi oi-check"></i>Done</th>
-                <th><i class="oi oi-trash"></i></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in _toDoList)
-            {
-                <tr>
-                    <td>
-                        @item.Title
-                    </td>
-                    <td>
-                        @item.DateTimeCreated.ToString("hh:mm tt")
-                    </td>
-                    <td>
-                    @if(item.Done == Done.Done)
-                    {
-                        item.done = true;
-                    }
-                    else
-                    {
-                        item.done = false;
-                    }
+                                    <InputCheckbox @bind-Value="item.done" @onclick="(() => DoneCheck(item))" class="custom-checkbox"></InputCheckbox>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline-primary" @onclick="(() => DeleteToDo(item))"> Delete </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </EditForm>
+            <form>
+                <input placeholder="What do you need to do?" @bind="_newItemTitle" />
+                <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
+            </form>
+        </div>
 
-                        <InputCheckbox  @bind-Value="item.done" @onclick ="(() => DoneCheck(item))" class="custom-checkbox"></InputCheckbox>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-primary" @onclick="(() => DeleteToDo(item))"> Delete </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</EditForm>
-<form>
-    <input placeholder="What do you need to do?" @bind="_newItemTitle" />
-    <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
-</form>
+
+    </Authorized>
+
+    <NotAuthorized>
+        Please Login
+    </NotAuthorized>
 
 
 
 
+</AuthorizeView>
 
 
 

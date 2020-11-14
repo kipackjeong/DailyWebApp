@@ -6,43 +6,47 @@
 @inject IToDoData ToDoData
 
 <h3>Overall</h3>
-<EditForm Model="_toDoDict">
-    <section>
-        <!--for demo wrap-->
-        <h1>Fixed Table header</h1>
-        <div class="tbl-header">
-            <table cellpadding="0" cellspacing="0" border="0">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Done</th>
-                        <th>Not Done</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var dateAndItems in _toDoDict)
-                    {
-                    <td>
-                        <h3>
-                            @dateAndItems.Key
-                        </h3>
-                    </td>
-                    <td>
-                        <h3> @dateAndItems.Value[0].Count Tasks Finished</h3>
-                    </td>
-                    <td>
-                        <h3> @dateAndItems.Value[1].Count Tasks Left To Do</h3>
-                    </td>
-                }
-                    </tbody>
-                </table>
-            </div>
+<AuthorizeView>
+    <Authorized Context="Auth">
+        <EditForm Model="_toDoDict">
+            <section>
+                <!--for demo wrap-->
+                <h1>Fixed Table header</h1>
+                <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Done</th>
+                                <th>Not Done</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var dateAndItems in _toDoDict)
+                            {
+                            <td>
+                                <h3>
+                                    @dateAndItems.Key
+                                </h3>
+                            </td>
+                            <td>
+                                <h3> @dateAndItems.Value[0].Count Tasks Finished</h3>
+                            </td>
+                            <td>
+                                <h3> @dateAndItems.Value[1].Count Tasks Left To Do</h3>
+                            </td>
+                        }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </EditForm>
+        </Authorized>
+    <NotAuthorized>
 
+    </NotAuthorized>
+</AuthorizeView>
 
-
-
-        </section>
-    </EditForm>
     @code {
         public IList<ToDoItem> _toDoList = new List<ToDoItem>();
         public IDictionary<string, List<ToDoItem>[]> _toDoDict = new Dictionary<string, List<ToDoItem>[]>
