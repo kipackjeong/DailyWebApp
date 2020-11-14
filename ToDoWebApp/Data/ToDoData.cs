@@ -39,8 +39,9 @@ namespace ToDoWebApp.Data
 
         public async Task InsertItem(ToDoItem item)
         {
-            var sql = @"Insert into dbo.ToDoList (Title, DateTimeCreated, DateCreated, Done)
-                                         values (@Title, @DateTimeCreated, @DateCreated, @Done)";
+            var done = (int)item.Done;
+            var sql = @$"Insert into dbo.ToDoList (Title, DateTimeCreated, DateCreated, Done)
+                                         values (@Title, @DateTimeCreated, @DateCreated, {done})";
             await _data.UpdateData<ToDoItem>(sql, item);
         }
 

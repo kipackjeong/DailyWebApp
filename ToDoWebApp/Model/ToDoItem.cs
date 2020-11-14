@@ -5,12 +5,18 @@ using System.Threading.Tasks;
 
 namespace ToDoWebApp.Model
 {
+    public enum Done
+    {
+        NotDone,
+        Done
+    }
     public class ToDoItem
     {
         public string Title { get; set; }
         public DateTime DateTimeCreated { get; set; }
         public string DateCreated { get; set; }
-        public int Done { get; set; }
+        public bool done { get; set; } = false;
+        public Done Done { get; set; }
 
         // ctor
         public ToDoItem()
@@ -22,7 +28,7 @@ namespace ToDoWebApp.Model
             Title = title;
             DateTimeCreated = dateTimeCreated;
             DateCreated = dateTimeCreated.ToString("MM/dd/yy"); // sql purpose
-            Done = 1;
+            Done = Done.NotDone;
         }
     }
 }

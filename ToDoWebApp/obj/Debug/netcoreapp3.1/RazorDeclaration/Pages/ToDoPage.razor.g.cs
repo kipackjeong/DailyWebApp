@@ -112,11 +112,11 @@ using ToDoWebApp.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+#line 52 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
        
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
     private string _newItemTitle { get; set; }
-
+    private bool myBool { get; set; } = false;
 
     // Page Model Methods
     protected async override Task OnInitializedAsync()
@@ -142,6 +142,11 @@ using ToDoWebApp.Model;
         await ToDoItemData.DeleteItem(item);
 
         _toDoList = await ToDoItemData.GetTodayToDoItem();
+    }
+
+    private async Task DoneCheck(ToDoItem item)
+    {
+        item.Done = item.Done == Done.NotDone ? Done.Done : Done.NotDone;
     }
 
 #line default
