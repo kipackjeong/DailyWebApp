@@ -5,10 +5,8 @@
 @using ToDoWebApp.Model
 @inject IToDoData ToDoData
 
-<h3>To Do</h3>
 <AuthorizeView>
     <Authorized Context="Auth">
-        <div>
             <EditForm Model="@_toDoList">
                 <table class="table table-hover" Model="@_toDoList">
                     <thead>
@@ -58,7 +56,6 @@
                     <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
                 </div>
             </form>
-        </div>
     </Authorized>
 
     <NotAuthorized>

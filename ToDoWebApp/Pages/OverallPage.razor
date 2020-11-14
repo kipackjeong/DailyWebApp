@@ -5,13 +5,10 @@
 @using System.Collections
 @inject IToDoData ToDoData
 
-<h3>Overall</h3>
 <AuthorizeView>
     <Authorized Context="Auth">
-        <div>
             <EditForm Model="@_toDoDict">
                 <!--for demo wrap-->
-                <h1>Fixed Table header</h1>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -20,6 +17,7 @@
                             </th>
                             <th><i class="oi oi-check"></i></th>
                             <th><i class="oi oi-x"></i></th>
+                            <th><i class="oi oi-magnifying-glass"></i></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,13 +32,15 @@
                         <td>
                             @dateAndItems.Value[1].Count
                         </td>
+                        <td>
+                            Detail
+                        </td>
                     }
 
-                    </tbody>
+                     </tbody>
 
-                    </table>
+                </table>
                 </EditForm>
-            </div>
         </Authorized>
         <NotAuthorized>
         </NotAuthorized>
