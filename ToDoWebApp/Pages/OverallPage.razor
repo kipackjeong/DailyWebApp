@@ -41,22 +41,24 @@
                                     <button class="btn btn-outline-primary" @onclick="(()=>Clicked(dateAndItems.Value))">Detail</button>
                                 </td>
                             </tr>
-                            @if (dateAndItems.Value.DetailClicked)
-                            {
-                                foreach (var item in dateAndItems.Value.NotDoneList)
-                                {
+                        #region DetailCicked
+		                            if (dateAndItems.Value.DetailClicked)
+                                    {
+                                        foreach (var item in dateAndItems.Value.NotDoneList)
+                                        {
 
-                                    <tr class="d-sm-table-row">
-                                        <td class="td-mini">
-                                            @item.Title
-                                        </td>
-                                        <td class="td-mini">
-                                            @item.DateTimeCreated.ToString("HH:mm")
-                                        </td>
-                                        <InputCheckbox @bind-Value="item.done"></InputCheckbox>
-                                    </tr>
-                                }
-                            }
+                                            <tr class="d-sm-table-row">
+                                                <td class="td-mini">
+                                                    @item.Title
+                                                </td>
+                                                <td class="td-mini">
+                                                    @item.DateTimeCreated.ToString("HH:mm")
+                                                </td>
+                                                <InputCheckbox @bind-Value="item.done"></InputCheckbox>
+                                            </tr>
+                                        }
+                                    } 
+                        #endregion
                         }
                     </tbody>
                 </table>
