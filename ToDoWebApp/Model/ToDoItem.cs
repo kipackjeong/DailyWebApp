@@ -15,22 +15,8 @@ namespace ToDoWebApp.Model
         public string Title { get; set; }
         public DateTime DateTimeCreated { get; set; }
         public string DateCreated { get; set; }
-        public bool done { get; set; } = false;
-        public Done Done
-        {
-            get
-            {
-                return Done;
-            }
-            set
-            {
-                Done = value;
-                if (Done == Done.Done)
-                    done = true;
-                else
-                    done = false;
-            }
-        }
+        public bool done { get; set; }
+        public Done Done { get; set; }
         // ctor
         public ToDoItem()
         {
@@ -42,6 +28,7 @@ namespace ToDoWebApp.Model
             DateTimeCreated = dateTimeCreated;
             DateCreated = dateTimeCreated.ToString("MM/dd/yy"); // sql purpose
             Done = Done.NotDone;
+            done = false;
         }
     }
 }
