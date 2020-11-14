@@ -28,7 +28,6 @@
                         @item.DateTimeCreated.ToString("hh:mm tt")
                     </td>
                     <td>
-                        <InputCheckbox @bind-Value="@item.DoneBool"></InputCheckbox>
                     </td>
                     <td>
                         <button class="btn btn-outline-primary" @onclick="(() => DeleteToDo(item))"> Delete </button>
@@ -66,7 +65,7 @@
         {
             var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
 
-            ToDoItemData.InsertItem(newToDoItem);
+            await ToDoItemData.InsertItem(newToDoItem);
 
             _newItemTitle = string.Empty;
         }

@@ -22,9 +22,10 @@ namespace ToDoWebApp.Data
         #region Methods
         public Task<List<ToDoItem>> GetTodayToDoItem()
         {
+            var today = DateTime.Now.ToString("MM/dd/yy");
             // need sql query
             var sql = @$" select * from dbo.ToDoList
-                           where DateCreated = '{DateTime.Now.ToString("MM/dd/yyyy")}'";
+                           where DateCreated = '{today}'";
 
             // Insert sql query in to SQLAccess: LoadData Method
             return _data.LoadData<ToDoItem, dynamic>(sql, new { }); // empty object
