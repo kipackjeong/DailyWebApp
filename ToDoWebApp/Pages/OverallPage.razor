@@ -7,59 +7,62 @@
 
 <AuthorizeView>
     <Authorized Context="Auth">
-        <EditForm Model="@_toDoDict">
-            <!--for demo wrap-->
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>
-                            <i class="oi oi-calendar"></i>
-                        </th>
-                        <th><i class="oi oi-check"></i></th>
-                        <th><i class="oi oi-x"></i></th>
-                        <th><i class="oi oi-magnifying-glass"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (var dateAndItems in _toDoDict)
-                    {
+        <div id="form-content">
+            <EditForm Model="@_toDoDict">
+                <!--for demo wrap-->
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-
-                            <td>
-                                @dateAndItems.Key
-                            </td>
-                            <td>
-                                @dateAndItems.Value.DoneList.Count
-                            </td>
-                            <td>
-                                @dateAndItems.Value.NotDoneList.Count
-
-                            </td>
-                            <td>
-                                <button class="btn btn-outline-primary" @onclick="(()=>Clicked(dateAndItems.Value))">Detail</button>
-                            </td>
+                            <th>
+                                <i class="oi oi-calendar"></i>
+                            </th>
+                            <th><i class="oi oi-check"></i></th>
+                            <th><i class="oi oi-x"></i></th>
+                            <th><i class="oi oi-magnifying-glass"></i></th>
                         </tr>
-                        @if (dateAndItems.Value.DetailClicked)
+                    </thead>
+                    <tbody>
+
+                        @foreach (var dateAndItems in _toDoDict)
                         {
-                            foreach (var item in dateAndItems.Value.NotDoneList)
+                            <tr>
+
+                                <td>
+                                    @dateAndItems.Key
+                                </td>
+                                <td>
+                                    @dateAndItems.Value.DoneList.Count
+                                </td>
+                                <td>
+                                    @dateAndItems.Value.NotDoneList.Count
+
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline-primary" @onclick="(()=>Clicked(dateAndItems.Value))">Detail</button>
+                                </td>
+                            </tr>
+                            @if (dateAndItems.Value.DetailClicked)
                             {
-                                
-                                <tr class="d-sm-table-row">
-                                    <td class="td-mini">
-                                        @item.Title
-                                    </td>
-                                    <td class="td-mini">
-                                        @item.DateTimeCreated.ToString("HH:mm")
-                                    </td>
-                                    <InputCheckbox @bind-Value="item.done"></InputCheckbox>
-                                </tr>
+                                foreach (var item in dateAndItems.Value.NotDoneList)
+                                {
+
+                                    <tr class="d-sm-table-row">
+                                        <td class="td-mini">
+                                            @item.Title
+                                        </td>
+                                        <td class="td-mini">
+                                            @item.DateTimeCreated.ToString("HH:mm")
+                                        </td>
+                                        <InputCheckbox @bind-Value="item.done"></InputCheckbox>
+                                    </tr>
+                                }
                             }
                         }
-                    }
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
             </EditForm>
+        </div>
+        
         </Authorized>
         <NotAuthorized>
         </NotAuthorized>
