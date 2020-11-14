@@ -106,3 +106,4 @@ C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcore
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ToDoPage.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\OverallPage.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\ToDoPage.razor.g.cs
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Dapper.dll

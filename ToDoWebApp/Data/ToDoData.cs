@@ -23,7 +23,7 @@ namespace ToDoWebApp.Data
         public Task<List<ToDoItem>> GetTodayToDoItem()
         {
             // need sql query
-            var sql = @$" select * from dbo.ToDoApp
+            var sql = @$" select * from dbo.ToDoList
                            where DateCreated = '{DateTime.Now.ToString("MM/dd/yyyy")}'";
 
             // Insert sql query in to SQLAccess: LoadData Method
@@ -32,20 +32,20 @@ namespace ToDoWebApp.Data
 
         public Task<List<ToDoItem>> GetOverallItem()
         {
-            var sql = "select * from dbo.ToDoApp";
+            var sql = "select * from dbo.ToDoList";
             return _data.LoadData<ToDoItem, dynamic>(sql, new { });
         }
 
         public async Task InsertItem(ToDoItem item)
         {
-            var sql = @"Insert into dbo.ToDoApp (Title, DateTimeCreated, DateCreated, Done)
+            var sql = @"Insert into dbo.ToDoList (Title, DateTimeCreated, DateCreated, Done)
                                          values (@Title, @DateTimeCreated, @DateCreated, @Done)";
             await _data.UpdateData<ToDoItem>(sql, item);
         }
 
         public async Task DeleteItem(ToDoItem item)
         {
-            var sql = $"delete from dbo.ToDoApp where Title = @Title";
+            var sql = $"delete from dbo.ToDoList where Title = @Title";
             await _data.UpdateData<ToDoItem>(sql, item);
         }
 

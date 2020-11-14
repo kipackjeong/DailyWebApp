@@ -54,6 +54,12 @@
     private string _newItemTitle { get; set; }
 
 
+    // Page Model Methods
+    protected async override Task OnInitializedAsync()
+    {
+        _toDoList = await ToDoItemData.GetTodayToDoItem();
+    }
+
     private async Task AddToDo()
     {
 
@@ -70,10 +76,6 @@
     {
         await ToDoItemData.DeleteItem(item);
 
-        _toDoList = await ToDoItemData.GetTodayToDoItem();
-    }
-    protected override async Task OnInitializedAsync()
-    {
         _toDoList = await ToDoItemData.GetTodayToDoItem();
     }
 }

@@ -27,8 +27,12 @@ namespace ToDoWebApp.Model
                 }
             }
         }
-        
+
         // ctor
+        public ToDoItem()
+        {
+
+        }
         public ToDoItem(string title, DateTime dateTimeCreated)
         {
             Title = title;
