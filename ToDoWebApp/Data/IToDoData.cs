@@ -7,7 +7,7 @@ namespace ToDoWebApp.Data
     public interface IToDoData
     {
         Task DeleteItem(ToDoItem item);
-
+        Task<Dictionary<string, Date>> GetItemsByDate();
         Task<List<ToDoItem>> GetOverallItem();
 
         Task<List<ToDoItem>> GetTodayToDoItem();

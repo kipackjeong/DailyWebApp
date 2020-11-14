@@ -36,6 +36,28 @@ namespace ToDoWebApp.Data
             var sql = "select * from dbo.ToDoList";
             return _data.LoadData<ToDoItem, dynamic>(sql, new { });
         }
+        // store items by it's created date
+        // ex) "11/14/2020" => Date = Done(list) {item1, item2...}
+        //                          = NotDone(list) {item3...}
+        public async Task<Dictionary<string,Date>> GetItemsByDate()
+        {
+            // get all the items from db
+            var list = await GetOverallItem();
+            var dict = new Dictionary<string, Date>();
+            // distribute items by its createddate
+            foreach(var item in list)
+            {
+                if(!dict.ContainsKey(item.DateCreated))
+                {
+                    dict[item.DateCreated] = new Date(item.DateCreated);
+                }
+                if (item.Done == Done.Done)
+                    dict[item.DateCreated].DoneList.Add(item);
+                else
+                    dict[item.DateCreated].NotDoneList.Add(item);
+            }
+            return dict;
+        }
 
         public async Task InsertItem(ToDoItem item)
         {

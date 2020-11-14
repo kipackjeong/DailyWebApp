@@ -21,65 +21,61 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach (var dateAndItems in _toDoDict)
                     {
-                        <td>
-                            @dateAndItems.Key
-                        </td>
-                        <td>
-                            @dateAndItems.Value[0].Count
-                        </td>
-                        <td>
-                            @dateAndItems.Value[1].Count
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-primary" @bind-Value="">Detail</button>
-                        </td>
-                    }
+                        <tr>
 
+                            <td>
+                                @dateAndItems.Key
+                            </td>
+                            <td>
+                                @dateAndItems.Value.DoneList.Count
+                            </td>
+                            <td>
+                                @dateAndItems.Value.NotDoneList.Count
+
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-primary" @onclick="(()=>Clicked(dateAndItems.Value))">Detail</button>
+                            </td>
+                        </tr>
+                        @if (dateAndItems.Value.DetailClicked)
+                        {
+                            foreach (var item in dateAndItems.Value.NotDoneList)
+                            {
+                                
+                                <tr class="d-sm-table-row">
+                                    <td class="td-mini">
+                                        @item.Title
+                                    </td>
+                                    <td class="td-mini">
+                                        @item.DateTimeCreated.ToString("HH:mm")
+                                    </td>
+                                    <InputCheckbox @bind-Value="item.done"></InputCheckbox>
+                                </tr>
+                            }
+                        }
+                    }
                 </tbody>
             </table>
             </EditForm>
-            <ToDoPage></ToDoPage>
         </Authorized>
         <NotAuthorized>
         </NotAuthorized>
     </AuthorizeView>
 
     @code {
-        public IList<ToDoItem> _toDoList = new List<ToDoItem>();
-        public IDictionary<string, List<ToDoItem>[]> _toDoDict = new Dictionary<string, List<ToDoItem>[]>
-    ();
+        public IDictionary<string, Date> _toDoDict = new Dictionary<string, Date>();
+
 
         // load data upon initialization
         protected override async Task OnInitializedAsync()
         {
-            _toDoList = await ToDoData.GetOverallItem();
-
-            // iterate over todolist
-            // generate key(DateCreated) and value(list of items)
-            foreach (var item in _toDoList)
-            {
-                if (!_toDoDict.ContainsKey(item.DateCreated))
-                {
-                    _toDoDict[item.DateCreated] = new List<ToDoItem>[]
-                    {
-                        new List<ToDoItem>(),
-                        new List<ToDoItem>()
-                    };
-                }
-                // if task is done store it to list at 0 index
-
-                switch (item.Done)
-                {
-                    case Done.Done:
-                        _toDoDict[item.DateCreated][0].Add(item);
-                        break;
-                    // if taks is not done store it to list at 1index
-                    case Done.NotDone:
-                        _toDoDict[item.DateCreated][1].Add(item);
-                        break;
-                }
-            }
+            _toDoDict = await ToDoData.GetItemsByDate();
+        }
+        private async Task Clicked(Date date)
+        {
+                date.DetailClicked = date.DetailClicked == true ? false : true;
         }
     }

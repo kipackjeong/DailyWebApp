@@ -112,7 +112,7 @@ using ToDoWebApp.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 66 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+#line 70 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
        
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
     private string _newItemTitle { get; set; }

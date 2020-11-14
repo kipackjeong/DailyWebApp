@@ -7,55 +7,59 @@
 
 <AuthorizeView>
     <Authorized Context="Auth">
-            <EditForm Model="@_toDoList">
-                <table class="table table-hover" Model="@_toDoList">
-                    <thead>
+        <EditForm Model="@_toDoList">
+            <table class="table table-hover" Model="@_toDoList">
+                <thead>
+                    <tr>
+                        <th><i class="oi oi-pencil"></i></th>
+                        <th><i class="oi oi-calendar"></i></th>
+                        <th><i class="oi oi-check"></i></th>
+                        <th><i class="oi oi-trash"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in _toDoList)
+                    {
                         <tr>
-                            <th><i class="oi oi-pencil"></i></th>
-                            <th><i class="oi oi-calendar"></i></th>
-                            <th><i class="oi oi-check"></i></th>
-                            <th><i class="oi oi-trash"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in _toDoList)
-                        {
-                            <tr>
-                                <td>
-                                    @item.Title
-                                </td>
-                                <td>
-                                    @item.DateTimeCreated.ToString("hh:mm tt")
-                                </td>
-                                <td>
-                                    @if (item.Done == Done.Done)
-                                    {
-                                        item.done = true;
-                                    }
-                                    else
-                                    {
-                                        item.done = false;
-                                    }
+                            <td>
+                                @item.Title
+                            </td>
+                            <td>
+                                @item.DateTimeCreated.ToString("hh:mm tt")
+                            </td>
+                            <td>
+                                @if (item.Done == Done.Done)
+                                {
+                                    item.done = true;
+                                }
+                                else
+                                {
+                                    item.done = false;
+                                }
 
-                                    <InputCheckbox @bind-Value="item.done" @onclick="(() => DoneCheck(item))" class="custom-checkbox"></InputCheckbox>
-                                </td>
-                                <td>
-                                    <button class="btn btn-outline-primary" @onclick="(() => DeleteToDo(item))"> Delete </button>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </EditForm>
-            <form style="display: flex; justify-content:center; width:80%">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon3">What do you need to do?</span>
-                    </div>
-                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" @bind="_newItemTitle">
-                    <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
+                                <InputCheckbox @bind-Value="item.done" @onclick="(() => DoneCheck(item))" class="custom-checkbox"></InputCheckbox>
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-primary" @onclick="(() => DeleteToDo(item))"> Delete </button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </EditForm>
+
+        <!-- #region ToDo Input -->
+        <form style="display: flex; justify-content:center; width:80%">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">To Do Today</span>
                 </div>
-            </form>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" @bind="_newItemTitle">
+                <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
+            </div>
+        </form>
+        <!-- #endregion -->
     </Authorized>
 
     <NotAuthorized>
