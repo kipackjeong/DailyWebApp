@@ -75,6 +75,34 @@ using ToDoWebApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+using System.Threading;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+using Microsoft.EntityFrameworkCore.Internal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+using ToDoWebApp.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+using ToDoWebApp.Model;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/todo")]
     public partial class ToDoPage : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -83,6 +111,36 @@ using ToDoWebApp.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 52 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+       
+    public IList<ToDoItem> _toDoList = new List<ToDoItem>();
+    private string _newItemTitle { get; set; }
+
+
+    private async Task AddToDo()
+    {
+
+        var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
+        await ToDoItemData.InsertTodayToDoItem(newToDoItem);
+        _newItemTitle = string.Empty;
+        _toDoList = await ToDoItemData.GetTodayToDoItem();
+    }
+
+    private async Task DeleteToDo(ToDoItem item)
+    {
+        await ToDoItemData.DeleteToDoItem(item);
+        _toDoList = await ToDoItemData.GetTodayToDoItem();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        _toDoList = await ToDoItemData.GetTodayToDoItem();
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToDoItemData ToDoItemData { get; set; }
     }
 }
 #pragma warning restore 1591
