@@ -62,13 +62,14 @@
 
     private async Task AddToDo()
     {
+        if(!String.IsNullOrEmpty(_newItemTitle))
+        {
+            var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
 
-        var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
+            ToDoItemData.InsertItem(newToDoItem);
 
-        await ToDoItemData.InsertItem(newToDoItem);
-
-        _newItemTitle = string.Empty;
-
+            _newItemTitle = string.Empty;
+        }
         _toDoList = await ToDoItemData.GetTodayToDoItem();
     }
 
