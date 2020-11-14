@@ -30,17 +30,21 @@ namespace ToDoWebApp.Data
             return _data.LoadData<ToDoItem, dynamic>(sql, new { }); // empty object
 
         }
-        public async Task<List<ToDoItem>> GetOverallItem()
+        public Task<List<ToDoItem>> GetOverallItem()
         {
-            return;
+            var sql = "select * from dbo.ToDoApp";
+            return _data.LoadData<ToDoItem, dynamic>(sql, new { }); 
         }
         public async Task InsertItem(ToDoItem item)
         {
-
+            var sql = @"Insert into dbo.ToDoApp (Title, DateTimeCreated, DateCreated, Done)
+                                         values (@Title, @DateTimeCreated, @DateCreated, @Done)";
+            await _data.UpdateData<ToDoItem>(sql, item);
         }
         public async Task DeleteItem(ToDoItem item)
         {
-            
+            var sql = $"delete from dbo.ToDoApp where Title = @Title";
+            await _data.UpdateData<ToDoItem>(sql, item);
         }
         
 
