@@ -75,6 +75,34 @@ using ToDoWebApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
+using ToDoWebApp.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
+using ToDoWebApp.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
+using System.Runtime.CompilerServices;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
+using System.Collections;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/overall")]
     public partial class OverallPage : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -83,6 +111,50 @@ using ToDoWebApp.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 46 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
+           
+        public IList<ToDoItem> _toDoList = new List<ToDoItem>();
+        public IDictionary<string, List<ToDoItem>[]> _toDoDict = new Dictionary<string, List<ToDoItem>[]>
+    ();
+
+        // load data upon initialization
+        protected override async Task OnInitializedAsync()
+        {
+            _toDoList = await ToDoData.GetOverallItem();
+
+            // iterate over todolist
+            // generate key(DateCreated) and value(list of items)
+            foreach (var item in _toDoList)
+            {
+                if (!_toDoDict.ContainsKey(item.DateCreated))
+                {
+                    _toDoDict[item.DateCreated] = new List<ToDoItem>[]
+                    {
+                        new List<ToDoItem>(),
+                        new List<ToDoItem>()
+                    };
+                }
+                // if task is done store it to list at 0 index
+
+                switch (item.Done)
+                {
+                    case Done.Done:
+                        _toDoDict[item.DateCreated][0].Add(item);
+                        break;
+                    // if taks is not done store it to list at 1index
+                    case Done.NotDone:
+                        _toDoDict[item.DateCreated][1].Add(item);
+                        break;
+                }
+            }
+        }
+    
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToDoData ToDoData { get; set; }
     }
 }
 #pragma warning restore 1591

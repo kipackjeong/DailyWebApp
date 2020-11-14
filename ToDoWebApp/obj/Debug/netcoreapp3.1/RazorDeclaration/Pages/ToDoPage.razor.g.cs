@@ -120,7 +120,7 @@ using ToDoWebApp.Model;
     // Page Model Methods
     protected async override Task OnInitializedAsync()
     {
-        _toDoList = await ToDoItemData.GetTodayToDoItem();
+        _toDoList = await ToDoData.GetTodayToDoItem();
     }
 
     private async Task AddToDo()
@@ -129,18 +129,18 @@ using ToDoWebApp.Model;
         {
             var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
 
-            await ToDoItemData.InsertItem(newToDoItem);
+            await ToDoData.InsertItem(newToDoItem);
 
             _newItemTitle = string.Empty;
         }
-        _toDoList = await ToDoItemData.GetTodayToDoItem();
+        _toDoList = await ToDoData.GetTodayToDoItem();
     }
 
     private async Task DeleteToDo(ToDoItem item)
     {
-        await ToDoItemData.DeleteItem(item);
+        await ToDoData.DeleteItem(item);
 
-        _toDoList = await ToDoItemData.GetTodayToDoItem();
+        _toDoList = await ToDoData.GetTodayToDoItem();
     }
 
     private async Task DoneCheck(ToDoItem item)
@@ -150,11 +150,11 @@ using ToDoWebApp.Model;
 
         if (item.Done == Done.Done)
         {
-            await ToDoItemData.UpdateToDoneStatus(item);
+            await ToDoData.UpdateToDoneStatus(item);
         }
         else
         {
-            await ToDoItemData.UpdateToUnDoneStatus(item);
+            await ToDoData.UpdateToUnDoneStatus(item);
         }
 
     }
@@ -162,7 +162,7 @@ using ToDoWebApp.Model;
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToDoData ToDoItemData { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToDoData ToDoData { get; set; }
     }
 }
 #pragma warning restore 1591
