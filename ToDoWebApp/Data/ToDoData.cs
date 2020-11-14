@@ -50,7 +50,16 @@ namespace ToDoWebApp.Data
             var sql = $"delete from dbo.ToDoList where Title = @Title";
             await _data.UpdateData<ToDoItem>(sql, item);
         }
-
+        public void UpdateToDoneStatus(ToDoItem item)
+        {
+            var sql = $@"update dbo.ToDoList Set Done = 1 where Title = @Title";
+            _data.UpdateData<ToDoItem>(sql, item);
+        }
+        public void UpdateToUnDoneStatus(ToDoItem item)
+        {
+            var sql = $@"update dbo.ToDoList Set Done = 0 where Title = @Title";
+            _data.UpdateData<ToDoItem>(sql, item);
+        }
         #endregion
     }
 }

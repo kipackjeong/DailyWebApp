@@ -144,9 +144,18 @@ using ToDoWebApp.Model;
         _toDoList = await ToDoItemData.GetTodayToDoItem();
     }
 
-    private async Task DoneCheck(ToDoItem item)
+    private void DoneCheck(ToDoItem item)
     {
         item.Done = item.Done == Done.NotDone ? Done.Done : Done.NotDone;
+        if (item.Done == Done.Done)
+        {
+            ToDoItemData.UpdateToDoneStatus(item);
+        }
+        else
+        {
+            ToDoItemData.UpdateToUnDoneStatus(item);
+        }
+
     }
 
 #line default
