@@ -1,0 +1,59 @@
+﻿
+@page "/"
+@using ToDoWebApp.Data
+@using ToDoWebApp.Model
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@*@inject HttpClient Http*@
+<link href="css/login.css" rel="stylesheet" />
+
+<!-- #region Center -->
+<!-- Login Form -->
+<EditForm Model="@user">
+    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email Address" @bind="@user.EmailAddress">
+    <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" >
+    <input type="submit" class="fadeIn fourth" value="Log In" @onclick="ValidateUser">
+</EditForm>
+
+<!-- Remind Passowrd -->
+<div id="formFooter">
+    <a class="underlineHover" href="#">Forgot Password?</a>
+    <br />
+    <a class="underlineHover" href="signup"> Sign up</a>
+</div>
+<!-- #endregion -->
+
+
+
+@code {
+    public User user { get; set; } = new User();
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+
+    private async Task<bool> ValidateUser()
+    {
+        //// APi Call
+        //HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
+        //httpRequestMessage.Method = new HttpMethod("POST");
+        ////httpRequestMessage.RequestUri = new Uri("")
+
+
+        //await Http.SendAsync(null);
+
+
+        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsAuthenticated(user.EmailAddress);
+        NavigationManager.NavigateTo("todo");
+
+        // store state
+        await sessionStorage.SetItemAsync("emailAddress", user.EmailAddress);
+
+        return await Task.FromResult(true);
+    }
+}

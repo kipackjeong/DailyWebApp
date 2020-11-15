@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[5.1.0, )"
             },
+            "Blazored.SessionStorage": {
+              "target": "Package",
+              "version": "[1.0.12, )"
+            },
             "Dapper": {
               "target": "Package",
               "version": "[2.0.35, )"

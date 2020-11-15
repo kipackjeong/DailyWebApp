@@ -97,7 +97,7 @@ using Blazored.Modal.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Shared\NavMenu.razor"
+#line 31 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

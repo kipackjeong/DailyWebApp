@@ -25,6 +25,7 @@
       "ToDoWebApp/1.0.0": {
         "dependencies": {
           "Blazored.Modal": "5.1.0",
+          "Blazored.SessionStorage": "1.0.12",
           "Dapper": "2.0.35",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.9",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.9",
@@ -311,6 +312,21 @@
         },
         "compile": {
           "lib/netstandard2.1/Blazored.Modal.dll": {}
+        }
+      },
+      "Blazored.SessionStorage/1.0.12": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6",
+          "Microsoft.AspNetCore.Components.Web": "3.1.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Blazored.SessionStorage.dll": {
+            "assemblyVersion": "1.0.12.0",
+            "fileVersion": "1.0.12.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Blazored.SessionStorage.dll": {}
         }
       },
       "Dapper/2.0.35": {
@@ -3131,6 +3147,13 @@
       "sha512": "sha512-Sw2pWqDWugPFf4BKmO2Cd8SZ4nQluIvgrcINuAFQrCRLoaY1+dp6gGbtEvenLc6pgjyD7TX4eg7qnU4LSpVN6A==",
       "path": "blazored.modal/5.1.0",
       "hashPath": "blazored.modal.5.1.0.nupkg.sha512"
+    },
+    "Blazored.SessionStorage/1.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-46Ecq7Ek5vjCHjuf9Yia6bIcsgF3gQUYzTvCshoXUj1E3Xg2VD+42PAtWwYEf8yedFZUNdTlaFazjwc5zPHEGw==",
+      "path": "blazored.sessionstorage/1.0.12",
+      "hashPath": "blazored.sessionstorage.1.0.12.nupkg.sha512"
     },
     "Dapper/2.0.35": {
       "type": "package",

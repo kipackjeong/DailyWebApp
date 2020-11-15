@@ -1,0 +1,52 @@
+﻿
+@page "/signup"
+@using ToDoWebApp.Data
+@using ToDoWebApp.Model
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+
+<link href="css/login.css" rel="stylesheet" />
+
+<!-- #region Center -->
+<EditForm Model="@user">
+    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email Address" @bind="@user.EmailAddress">
+    <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password" @bind="@user.Password">
+    <input type="text" id="password" class="fadeIn third" name="login" placeholder="Confirm Password" @bind="@user.Password">
+    <input type="submit" class="fadeIn fourth" value="Sign up" @onclick="ValidateUser">
+</EditForm>
+
+<!-- Remind Passowrd -->
+<div id="formFooter">
+    <a class="underlineHover" href="#">Forgot Password?</a>
+    <br />
+    <a class="underlineHover" href="#"> Sign in</a>
+</div>
+<!-- #endregion -->
+
+
+
+@code {
+    public User user { get; set; } = new User();
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+
+    private async Task<bool> ValidateUser()
+    {
+        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsAuthenticated(user.EmailAddress);
+        NavigationManager.NavigateTo("signin");
+
+        // store state
+        await sessionStorage.SetItemAsync("emailAddress", user.EmailAddress);
+
+        return await Task.FromResult(true);
+    }
+}
+

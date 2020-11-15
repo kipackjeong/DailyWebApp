@@ -89,7 +89,7 @@ using Blazored.Modal.Services;
 #line default
 #line hidden
 #nullable disable
-    public partial class LoginDisplay : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class LoginDisplay : LayoutComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

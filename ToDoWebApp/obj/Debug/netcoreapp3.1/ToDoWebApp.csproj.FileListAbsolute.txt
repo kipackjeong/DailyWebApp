@@ -68,7 +68,6 @@ C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcore
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\ToDoWebApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\ToDoWebApp.RazorComponent.input.cache
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
-C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\LoginDisplay.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -80,14 +79,11 @@ C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcore
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\ToDoWebApp.TagHelpers.output.cache
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\ToDoWebApp.RazorCoreGenerate.cache
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
-C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Shared\LoginDisplay.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
-C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\LogOut.cshtml.g.cs
-C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\_Host.cshtml.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\ToDoWebApp.RazorAssemblyInfo.cache
@@ -107,8 +103,6 @@ C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcore
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\OverallPage.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\ToDoPage.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Dapper.dll
-C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Login.razor.g.cs
-C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\OverallModalPage.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\OverallModalPage.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Blazored.Modal.dll
@@ -119,3 +113,10 @@ C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcore
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.dll
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.WebAssembly.dll
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Blazored.SessionStorage.dll
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Account\Login.razor.g.cs
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Account\SignUp.razor.g.cs
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Account\Login.razor.g.cs
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Account\SignUp.razor.g.cs
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Account\_imports.razor.g.cs
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Account\_imports.razor.g.cs

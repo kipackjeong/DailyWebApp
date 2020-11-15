@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ToDoWebApp.Pages
+namespace ToDoWebApp.Pages.Account
 {
     #line hidden
     using System;
@@ -89,14 +89,67 @@ using Blazored.Modal.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\Account\Login.razor"
+using ToDoWebApp.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\Account\Login.razor"
+using ToDoWebApp.Model;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(LoginDisplay))]
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 30 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\Account\Login.razor"
+       
+    public User user { get; set; } = new User();
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+
+    private async Task<bool> ValidateUser()
+    {
+        //// APi Call
+        //HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
+        //httpRequestMessage.Method = new HttpMethod("POST");
+        ////httpRequestMessage.RequestUri = new Uri("")
+
+
+        //await Http.SendAsync(null);
+
+
+        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsAuthenticated(user.EmailAddress);
+        NavigationManager.NavigateTo("todo");
+
+        // store state
+        await sessionStorage.SetItemAsync("emailAddress", user.EmailAddress);
+
+        return await Task.FromResult(true);
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Blazored.SessionStorage.ISessionStorageService sessionStorage { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
     }
 }
 #pragma warning restore 1591

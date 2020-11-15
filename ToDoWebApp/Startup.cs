@@ -13,9 +13,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ToDoWebApp.Areas.Identity;
 using ToDoWebApp.Data;
 using Blazored.Modal;
+using Blazored.SessionStorage;
+
 namespace ToDoWebApp
 {
     public class Startup
@@ -42,9 +43,16 @@ namespace ToDoWebApp
             services.AddBlazoredModal();
 
             //DI
-            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+            //services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<ISQLAccess, SQLAccess>();
             services.AddSingleton<IToDoData, ToDoData>();
+
+            // Session Storage
+            services.AddBlazoredSessionStorage();
+
+
+
+            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
