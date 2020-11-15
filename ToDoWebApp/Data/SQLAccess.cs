@@ -11,7 +11,7 @@ namespace ToDoWebApp.Data
     public class SQLAccess : ISQLAccess
     {
         private IConfiguration _config;
-        private string _connectionString { get; set; } = "ToDoApp"; // appsettings.json
+        private string _connectionString { get; set; } = "ToDoItems"; // appsettings.json
 
         //ctor
         public SQLAccess(IConfiguration config)
