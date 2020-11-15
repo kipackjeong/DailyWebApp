@@ -7,6 +7,6 @@ namespace ToDoWebApp.Data
     {
         Task<List<T>> LoadData<T, TU>(string sql, TU param);
 
-        Task UpdateData<T>(string sql, T param);
+        Task RunQuery<T>(string sql, T param);
     }
 }

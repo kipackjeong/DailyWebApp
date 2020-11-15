@@ -3,8 +3,10 @@
 @using ToDoWebApp.Data
 @using System.Runtime.CompilerServices
 @using System.Collections
+@using Blazored.Modal
+@using Blazored.Modal.Services
+ 
 @inject IToDoData ToDoData
-
 <AuthorizeView>
     <Authorized Context="Auth">
         <div id="form-content">
@@ -14,11 +16,11 @@
                     <thead>
                         <tr>
                             <th>
-                                <i class="oi oi-calendar"></i>
+                                <i id ="blue-icon"class="oi oi-calendar"></i>
                             </th>
-                            <th><i class="oi oi-check"></i></th>
-                            <th><i class="oi oi-x"></i></th>
-                            <th><i class="oi oi-magnifying-glass"></i></th>
+                            <th><i id ="blue-icon" class="oi oi-check"></i></th>
+                            <th><i id ="blue-icon" class="oi oi-x"></i></th>
+                            <th><i id ="blue-icon" class="oi oi-magnifying-glass"></i></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,49 +40,71 @@
 
                                 </td>
                                 <td>
-                                    <button class="btn btn-outline-primary" @onclick="(()=>Clicked(dateAndItems.Value))">Detail</button>
+                                    <button class="btn btn-outline-primary" @onclick="(()=>DetailClick(dateAndItems.Value))">Detail</button>
                                 </td>
                             </tr>
-                        #region DetailCicked
-		                            if (dateAndItems.Value.DetailClicked)
-                                    {
-                                        foreach (var item in dateAndItems.Value.NotDoneList)
-                                        {
-
-                                            <tr class="d-sm-table-row">
-                                                <td class="td-mini">
-                                                    @item.Title
-                                                </td>
-                                                <td class="td-mini">
-                                                    @item.DateTimeCreated.ToString("HH:mm")
-                                                </td>
-                                                <InputCheckbox @bind-Value="item.done"></InputCheckbox>
-                                            </tr>
-                                        }
-                                    } 
-                        #endregion
                         }
                     </tbody>
                 </table>
             </EditForm>
         </div>
-        
-        </Authorized>
-        <NotAuthorized>
-        </NotAuthorized>
-    </AuthorizeView>
 
-    @code {
-        public IDictionary<string, Date> _toDoDict = new Dictionary<string, Date>();
+    </Authorized>
+    <NotAuthorized>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    //Modal
+    [CascadingParameter] public IModalService Modal { get; set; }
+
+    //DataContainer
+    public IDictionary<string, Date> _toDoDict = new Dictionary<string, Date>();
+    
+
+    // load data upon initialization
+    protected override async Task OnInitializedAsync()
+    {
+        _toDoDict = await ToDoData.GetItemsByDate();
+    }
+
+    private async Task DetailClick(Date date)
+    {
+        date.DetailClicked = date.DetailClicked == true ? false : true;
+
+        var modalParam = new ModalParameters();
+
+        modalParam.Add(nameof(OverallModalPage.ToDoDate), date);
 
 
-        // load data upon initialization
-        protected override async Task OnInitializedAsync()
+        var modal = Modal.Show<OverallModalPage>($"{date.DateCreated}", modalParam);
+        var result = await modal.Result;
+        var dataResult = result.Data;
+
+        if(!result.Cancelled)
         {
+            await ToDoData.UpdateAll((Date)dataResult);
+
             _toDoDict = await ToDoData.GetItemsByDate();
         }
-        private async Task Clicked(Date date)
+
+    }
+
+
+    private async Task DoneCheck(ToDoItem item)
+    {
+        item.Done = item.Done == Done.NotDone ? Done.Done : Done.NotDone;
+
+        if (item.Done == Done.Done)
         {
-                date.DetailClicked = date.DetailClicked == true ? false : true;
+            await ToDoData.UpdateToDoneStatus(item);
+        }
+        else
+        {
+            await ToDoData.UpdateToUnDoneStatus(item);
         }
     }
+
+
+
+}

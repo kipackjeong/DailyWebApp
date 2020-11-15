@@ -8,8 +8,8 @@ namespace ToDoWebApp.Model
     public class Date
     {
         public string DateCreated { get; set; }
-        public IList<ToDoItem> DoneList { get; set; }
-        public IList<ToDoItem> NotDoneList { get; set; }
+        public List<ToDoItem> DoneList { get; set; }
+        public List<ToDoItem> NotDoneList { get; set; }
         public bool DetailClicked { get; set; } = false;
 
 

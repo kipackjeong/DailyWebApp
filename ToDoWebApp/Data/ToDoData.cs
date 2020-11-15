@@ -64,25 +64,42 @@ namespace ToDoWebApp.Data
             var done = (int)item.Done;
             var sql = @$"Insert into dbo.ToDoList (Title, DateTimeCreated, DateCreated, Done)
                                          values (@Title, @DateTimeCreated, @DateCreated, {done})";
-            await _data.UpdateData<ToDoItem>(sql, item);
+            await _data.RunQuery<ToDoItem>(sql, item);
         }
 
         public async Task DeleteItem(ToDoItem item)
         {
             var sql = $"delete from dbo.ToDoList where Title = @Title";
-            await _data.UpdateData<ToDoItem>(sql, item);
+            await _data.RunQuery<ToDoItem>(sql, item);
         }
 
         public async Task UpdateToDoneStatus(ToDoItem item)
         {
             var sql = $@"update dbo.ToDoList Set Done = 1 where Title = @Title";
-            await _data.UpdateData<ToDoItem>(sql, item);
+            await _data.RunQuery<ToDoItem>(sql, item);
         }
 
         public async Task UpdateToUnDoneStatus(ToDoItem item)
         {
             var sql = $@"update dbo.ToDoList Set Done = 0 where Title = @Title";
-            await _data.UpdateData<ToDoItem>(sql, item);
+            await _data.RunQuery<ToDoItem>(sql, item);
+        }
+        public async Task UpdateAll(Date date)
+        {
+            foreach(var item in date.DoneList)
+            {
+                await SingleUpdate(item);
+            }
+            foreach(var item in date.NotDoneList)
+            {
+                await SingleUpdate(item);
+            }
+        }
+        public async Task SingleUpdate(ToDoItem item)
+        {
+            var done = (int)item.Done;
+            var sql = $@"update dbo.ToDoList Set Done = {done} where Title = @Title";
+            await _data.RunQuery<ToDoItem>(sql, item);
         }
 
         #endregion Methods

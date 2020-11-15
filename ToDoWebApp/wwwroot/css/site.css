@@ -193,6 +193,7 @@ app {
     background: #fff;
     padding: 30px;
     width: 90%;
+    min-height: 20vh;
     max-width: 800px;
     position: relative;
     margin: auto;
@@ -201,7 +202,20 @@ app {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
 }
-
+.input-shaded {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+}
 h1 {
     font-size: 30px;
     color: #fff;
@@ -259,3 +273,15 @@ section {
     margin: 50px;
 }
 
+/* Modal */
+.blazored-modal {
+    background: -webkit-linear-gradient(top, #9AF2FF, #1F93F8);
+    background: linear-gradient(to bottom, #9AF2FF, #1F93F8);
+    color:white;
+}
+.blazored-modal-title{
+    font-size:3.5rem;
+}
+#blue-icon {
+    color: #1F93F8;
+}

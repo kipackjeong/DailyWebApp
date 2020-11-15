@@ -13,7 +13,8 @@ namespace ToDoWebApp.Data
         Task<List<ToDoItem>> GetTodayToDoItem();
 
         Task InsertItem(ToDoItem item);
-
+        Task SingleUpdate(ToDoItem item);
+        Task UpdateAll(Date date);
         Task UpdateToDoneStatus(ToDoItem item);
 
         Task UpdateToUnDoneStatus(ToDoItem item);

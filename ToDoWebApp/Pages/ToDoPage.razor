@@ -12,10 +12,10 @@
                 <table class="table table-hover" Model="@_toDoList">
                     <thead>
                         <tr>
-                            <th><i class="oi oi-pencil"></i></th>
-                            <th><i class="oi oi-calendar"></i></th>
-                            <th><i class="oi oi-check"></i></th>
-                            <th><i class="oi oi-trash"></i></th>
+                            <th><i id="blue-icon" class="oi oi-pencil"></i></th>
+                            <th><i id="blue-icon" class="oi oi-calendar"></i></th>
+                            <th><i id="blue-icon" class="oi oi-check"></i></th>
+                            <th><i id="blue-icon" class="oi oi-trash"></i></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,23 +47,25 @@
                         }
                     </tbody>
                 </table>
+
             </div>
-            
+            <!-- #region ToDo Input -->
+            <div class="input-shaded">
+                <form style="width:100%;">
+                    <div class="input-group mb-3" style="border:none">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">To Do</span>
+                        </div>
+                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" @bind="_newItemTitle">
+                        <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- #endregion -->
         </EditForm>
 
-        <!-- #region ToDo Input -->
-        <div id="form-content">
-            <form style="width:100%;">
-                <div class="input-group mb-3" style="border:none">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon3">To Do</span>
-                    </div>
-                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" @bind="_newItemTitle">
-                    <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
-                </div>
-            </form>
-        </div>
-        <!-- #endregion -->
+
     </Authorized>
 
     <NotAuthorized>
@@ -74,6 +76,9 @@
 @code {
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
     private string _newItemTitle { get; set; }
+    
+
+
 
     // Page Model Methods
     protected async override Task OnInitializedAsync()

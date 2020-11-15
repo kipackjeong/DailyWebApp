@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ToDoWebApp
+namespace ToDoWebApp.Pages
 {
     #line hidden
     using System;
@@ -76,26 +76,84 @@ using ToDoWebApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\_Imports.razor"
+#line 1 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallModalPage.razor"
 using Blazored.Modal;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\_Imports.razor"
+#line 2 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallModalPage.razor"
 using Blazored.Modal.Services;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class _Imports : System.Object
+#nullable restore
+#line 3 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallModalPage.razor"
+using ToDoWebApp.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallModalPage.razor"
+using ToDoWebApp.Data;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class OverallModalPage : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected void Execute()
+        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 81 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallModalPage.razor"
+       
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+    [Parameter] public Date ToDoDate { get; set; }
+
+    protected override void OnInitialized()
+    {
+    }
+    private async Task DeleteToDo(ToDoItem item, IList<ToDoItem> list)
+    {
+        list.Remove(item);
+        await ToDoData.DeleteItem(item);
+    }
+
+
+    private void DoneCheck(ToDoItem item)
+    {
+        item.Done = item.Done == Done.NotDone ? Done.Done : Done.NotDone;
+        if (item.Done == Done.Done)
+        {
+            ToDoData.UpdateToDoneStatus(item);
+        }
+        else
+        {
+            ToDoData.UpdateToUnDoneStatus(item);
+        }
+    }
+
+
+    private void Save()
+    {
+        BlazoredModal.Close(ModalResult.Ok(ToDoDate));
+    }
+
+    private void Cancel()
+    {
+        BlazoredModal.Cancel();
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToDoData ToDoData { get; set; }
     }
 }
 #pragma warning restore 1591

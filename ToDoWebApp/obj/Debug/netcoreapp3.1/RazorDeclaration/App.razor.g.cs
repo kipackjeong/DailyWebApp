@@ -75,6 +75,20 @@ using ToDoWebApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 1 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\App.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

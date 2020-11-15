@@ -36,7 +36,7 @@ namespace ToDoWebApp.Data
             }
         }
 
-        public async Task UpdateData<T>(string sql, T param)
+        public async Task RunQuery<T>(string sql, T param)
         {
             var connectionString = _config.GetConnectionString(_connectionString);
 

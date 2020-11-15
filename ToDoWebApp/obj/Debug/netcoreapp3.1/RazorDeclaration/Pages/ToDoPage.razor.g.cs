@@ -76,6 +76,20 @@ using ToDoWebApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 10 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
 using System.Threading;
 
@@ -112,10 +126,13 @@ using ToDoWebApp.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 74 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+#line 76 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
        
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
     private string _newItemTitle { get; set; }
+    
+
+
 
     // Page Model Methods
     protected async override Task OnInitializedAsync()

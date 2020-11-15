@@ -1,0 +1,120 @@
+﻿@using Blazored.Modal
+@using Blazored.Modal.Services
+@using ToDoWebApp.Model
+@using ToDoWebApp.Data
+@inject IToDoData ToDoData
+
+
+<EditForm Model="@ToDoDate">
+    <div id="form-content">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th><i id = "blue-icon" class="oi oi-pencil"></i></th>
+                    <th><i id = "blue-icon" class="oi oi-calendar"></i></th>
+                    <th><i id = "blue-icon" class="oi oi-check"></i></th>
+                    <th><i id = "blue-icon" class="oi oi-trash"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><content style="position:relative; left:140%">Not Done</content> </tr>
+                @foreach (var item in ToDoDate.NotDoneList)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.DateTimeCreated.ToString("hh:mm tt")</td>
+                        @if (item.Done == Done.Done)
+                        {
+                            item.done = true;
+                        }
+                        else
+                        {
+                            item.done = false;
+                        }
+                        <td>
+                            <InputCheckbox @bind-Value="item.done" @onclick="(() => DoneCheck(item))"></InputCheckbox>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary" @onclick="(() => DeleteToDo(item, ToDoDate.NotDoneList))"> Delete </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <table class="table table-hover">
+            <thead>
+            </thead>
+            <tbody>
+                <content style="position:relative; left:140%">Done</content>
+                @foreach (var item in ToDoDate.DoneList)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.DateTimeCreated.ToString("hh:mm tt")</td>
+                        @if (item.Done == Done.Done)
+                        {
+                            item.done = true;
+                        }
+                        else
+                        {
+                            item.done = false;
+                        }
+                        <td>
+                            <InputCheckbox @bind-Value="item.done" @onclick="(() => DoneCheck(item))"></InputCheckbox>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary" @onclick="(() => DeleteToDo(item,ToDoDate.DoneList))"> Delete </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button @onclick="Save" class="btn btn-outline-primary">Save</button>
+        <button class="btn btn-outline-primary">Cancel</button>
+    </div>
+
+</EditForm>
+
+
+
+@code {
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+    [Parameter] public Date ToDoDate { get; set; }
+
+    protected override void OnInitialized()
+    {
+    }
+    private async Task DeleteToDo(ToDoItem item, IList<ToDoItem> list)
+    {
+        list.Remove(item);
+        await ToDoData.DeleteItem(item);
+    }
+
+
+    private void DoneCheck(ToDoItem item)
+    {
+        item.Done = item.Done == Done.NotDone ? Done.Done : Done.NotDone;
+        if (item.Done == Done.Done)
+        {
+            ToDoData.UpdateToDoneStatus(item);
+        }
+        else
+        {
+            ToDoData.UpdateToUnDoneStatus(item);
+        }
+    }
+
+
+    private void Save()
+    {
+        BlazoredModal.Close(ModalResult.Ok(ToDoDate));
+    }
+
+    private void Cancel()
+    {
+        BlazoredModal.Cancel();
+    }
+}
+
+

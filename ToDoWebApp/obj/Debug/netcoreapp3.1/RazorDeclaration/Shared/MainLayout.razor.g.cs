@@ -75,6 +75,20 @@ using ToDoWebApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
     public partial class MainLayout : LayoutComponentBase
     {
         #pragma warning disable 1998
@@ -82,6 +96,7 @@ using ToDoWebApp.Shared;
         {
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService Modal { get; set; }
     }
 }
 #pragma warning restore 1591

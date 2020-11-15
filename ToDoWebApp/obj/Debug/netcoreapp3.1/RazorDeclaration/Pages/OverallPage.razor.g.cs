@@ -103,6 +103,20 @@ using System.Collections;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/overall")]
     public partial class OverallPage : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -112,21 +126,60 @@ using System.Collections;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 73 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
-           
-        public IDictionary<string, Date> _toDoDict = new Dictionary<string, Date>();
+#line 57 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\OverallPage.razor"
+       
+    //Modal
+    [CascadingParameter] public IModalService Modal { get; set; }
+
+    //DataContainer
+    public IDictionary<string, Date> _toDoDict = new Dictionary<string, Date>();
+    
+
+    // load data upon initialization
+    protected override async Task OnInitializedAsync()
+    {
+        _toDoDict = await ToDoData.GetItemsByDate();
+    }
+
+    private async Task DetailClick(Date date)
+    {
+        date.DetailClicked = date.DetailClicked == true ? false : true;
+
+        var modalParam = new ModalParameters();
+
+        modalParam.Add(nameof(OverallModalPage.ToDoDate), date);
 
 
-        // load data upon initialization
-        protected override async Task OnInitializedAsync()
+        var modal = Modal.Show<OverallModalPage>($"{date.DateCreated}", modalParam);
+        var result = await modal.Result;
+        var dataResult = result.Data;
+
+        if(!result.Cancelled)
         {
+            await ToDoData.UpdateAll((Date)dataResult);
+
             _toDoDict = await ToDoData.GetItemsByDate();
         }
-        private async Task Clicked(Date date)
+
+    }
+
+
+    private async Task DoneCheck(ToDoItem item)
+    {
+        item.Done = item.Done == Done.NotDone ? Done.Done : Done.NotDone;
+
+        if (item.Done == Done.Done)
         {
-                date.DetailClicked = date.DetailClicked == true ? false : true;
+            await ToDoData.UpdateToDoneStatus(item);
         }
-    
+        else
+        {
+            await ToDoData.UpdateToUnDoneStatus(item);
+        }
+    }
+
+
+
 
 #line default
 #line hidden

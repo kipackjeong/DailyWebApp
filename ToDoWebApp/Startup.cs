@@ -15,7 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ToDoWebApp.Areas.Identity;
 using ToDoWebApp.Data;
-
+using Blazored.Modal;
 namespace ToDoWebApp
 {
     public class Startup
@@ -38,6 +38,10 @@ namespace ToDoWebApp
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddBlazoredModal();
+
+            //DI
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<ISQLAccess, SQLAccess>();
             services.AddSingleton<IToDoData, ToDoData>();
