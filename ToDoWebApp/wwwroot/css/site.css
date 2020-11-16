@@ -181,7 +181,8 @@ app {
     }
 }
 
-/* TABLE */
+/*#region FormTable */
+
 #form-content {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
@@ -189,6 +190,8 @@ app {
     padding: 30px;
     width: 90%;
     min-height: 20vh;
+    max-height: 80vh;
+    overflow-y: scroll;
     max-width: 800px;
     position: relative;
     margin: auto;
@@ -197,6 +200,39 @@ app {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/*#endregion */
+
+/*#region Scroll Bar */
+
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #56baed;
+    ;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #019FF0;
+        ;
+    }
+
+
+/*#endregion */
+
+
+
+
 .input-shaded {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
