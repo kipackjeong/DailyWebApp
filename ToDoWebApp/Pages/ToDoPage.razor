@@ -3,6 +3,7 @@
 @using Microsoft.EntityFrameworkCore.Internal
 @using ToDoWebApp.Data
 @using ToDoWebApp.Model
+@using Syncfusion.Blazor.Calendars 
 @inject IToDoData ToDoData
 @inject AuthenticationStateProvider AuthenticationStateProvider
 <AuthorizeView>
@@ -50,15 +51,23 @@
 
             </div>
             <!-- #region ToDo Input -->
-            <div class="input-shaded">
+            <div>
                 <form style="width:100%;">
-                    <div class="input-group mb-3" style="border:none">
+                    <div class="input-group mb-3 input-shaded" style="border:none">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon3">To Do</span>
                         </div>
                         <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" @bind="_newItemTitle">
-                        <button class="btn btn-primary" @onclick="AddToDo"> Add </button>
                     </div>
+                    <div class="input-shaded" style="width:10%;">
+                        <div class="wrapper " style="width:100%">
+                            <Syncfusion.Blazor.Calendars.SfTimePicker TValue="DateTime" Value="@_dateTime" Min="@MinVal" Max="@MaxVal">
+                                <TimePickerEvents TValue="DateTime" ValueChange="@onChange"></TimePickerEvents>
+                            </Syncfusion.Blazor.Calendars.SfTimePicker>
+                        </div>
+                        <button class="btn btn-primary" style="width:100%" @onclick="AddToDo"> Add </button>
+                    </div>
+
                 </form>
             </div>
 
@@ -70,8 +79,9 @@
 @code {
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
     private string _newItemTitle { get; set; }
-
-
+    private DateTime _dateTime { get; set; } = DateTime.Now;
+    public DateTime MinVal { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15, DateTime.Now.Hour, 00, 00);
+    public DateTime MaxVal { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15, 23, 30, 00);
 
 
     // Page Model Methods
@@ -79,12 +89,18 @@
     {
         _toDoList = await ToDoData.GetTodayToDoItem();
     }
+    // Timepicker Method
+    private void onChange(Syncfusion.Blazor.Calendars.ChangeEventArgs<DateTime> args)
+    {
+        _dateTime = args.Value;
+        StateHasChanged();
+    }
 
     private async Task AddToDo()
     {
         if (!String.IsNullOrEmpty(_newItemTitle))
         {
-            var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
+            var newToDoItem = new ToDoItem(_newItemTitle, _dateTime);
 
             await ToDoData.InsertItem(newToDoItem);
 

@@ -117,6 +117,13 @@ using ToDoWebApp.Model;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+using Syncfusion.Blazor.Calendars;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/todo")]
     public partial class ToDoPage : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -126,12 +133,13 @@ using ToDoWebApp.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 70 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
+#line 79 "C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\Pages\ToDoPage.razor"
        
     public IList<ToDoItem> _toDoList = new List<ToDoItem>();
     private string _newItemTitle { get; set; }
-
-
+    private DateTime _dateTime { get; set; } = DateTime.Now;
+    public DateTime MinVal { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15, DateTime.Now.Hour, 00, 00);
+    public DateTime MaxVal { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15, 23, 30, 00);
 
 
     // Page Model Methods
@@ -139,12 +147,18 @@ using ToDoWebApp.Model;
     {
         _toDoList = await ToDoData.GetTodayToDoItem();
     }
+    // Timepicker Method
+    private void onChange(Syncfusion.Blazor.Calendars.ChangeEventArgs<DateTime> args)
+    {
+        _dateTime = args.Value;
+        StateHasChanged();
+    }
 
     private async Task AddToDo()
     {
         if (!String.IsNullOrEmpty(_newItemTitle))
         {
-            var newToDoItem = new ToDoItem(_newItemTitle, DateTime.Now);
+            var newToDoItem = new ToDoItem(_newItemTitle, _dateTime);
 
             await ToDoData.InsertItem(newToDoItem);
 

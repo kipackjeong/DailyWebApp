@@ -1,4 +1,5 @@
 ﻿<StaticWebAssets Version="1.0">
   <ContentRoot BasePath="/Identity" Path="C:\Users\JGB\.nuget\packages\microsoft.aspnetcore.identity.ui\3.1.9\staticwebassets\V4\" />
   <ContentRoot BasePath="_content/Blazored.Modal" Path="C:\Users\JGB\.nuget\packages\blazored.modal\5.1.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\JGB\.nuget\packages\syncfusion.blazor\18.3.0.48\build\..\staticwebassets\" />
 </StaticWebAssets>

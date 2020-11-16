@@ -120,3 +120,7 @@ C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcore
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Account\SignUp.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Account\_imports.razor.g.cs
 C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Account\_imports.razor.g.cs
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Syncfusion.Blazor.dll
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Syncfusion.ExcelExport.Net.dll
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Syncfusion.Licensing.dll
+C:\Users\JGB\Desktop\Programming\Project\ToDoWebApp\ToDoWebApp\bin\Debug\netcoreapp3.1\Syncfusion.PdfExport.Net.dll
