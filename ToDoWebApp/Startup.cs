@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using ToDoWebApp.Data;
 using Blazored.Modal;
 using Blazored.SessionStorage;
+using Syncfusion.Blazor;
 
 namespace ToDoWebApp
 {
@@ -42,6 +43,8 @@ namespace ToDoWebApp
 
             services.AddBlazoredModal();
 
+            services.AddSyncfusionBlazor();
+
             //DI
             //services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<ISQLAccess, SQLAccess>();
@@ -58,6 +61,8 @@ namespace ToDoWebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUyNzAxQDMxMzgyZTMzMmUzMExjZFBKa1VLSUQyRmlOK1E4bTNxaTJsSGE2QmhQbHliK0V3RnpnK3l1TFk9");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
