@@ -6,3 +6,4 @@
  - Get a good practice of Blazor server web development.
  - A daily report feature will be added soon where you can write down the task you actually did at current time.
  
+![Alt text here](assets/diagram.png)
